@@ -1,0 +1,39 @@
+Planning
+
+Things i will get from Julia's Dictionary
+ex. dictionary:
+
+{
+    "Harvests": -1,             ## How many more times you can harvest this crop before the end of the season (-1 = wrong season) (ex. you start on SP20, takes 1 day to grow, you can harvest it on SP21-SP28, so harvest would be 8)
+    "Crop Price": 100,          ## Cost of the crop once its fully grown to sell at farmer's market
+    "Average Batch": 1.5,       ## Average crop batch you get from a single harvest (ex. you get 5 carrots from one carrot seed or something)
+    "Total Revenue": 300,       ## Total raw revenue from average batch * crop price * harvests
+    "Price Per Seed": 25,       ## The cost of the price per seed
+    "Grow Time": 10,            ## How much days it takes for the seed to grow
+    "Harvest Time": 3,          ## If the seed is multi-harvest, then it is how many days it takes to harvest it again
+    "Harvest Days": [20, 25],   ## What days in this season you will harvest it on if you replanted immediately after you harvest it (or just it grows again if its a multi-harvest plant)
+    "Season": "SU",             ## What season this crop grows in
+    "Total Cost": 100,          ## Harvests * price per seed. How much money you will need to spend on seeds this season if you want to plant and replant maximum amount of times before the end of this season. (ONLY if its a single harvest plant since you'd need to buy it multiple times. if its a mutli-harvest plant, then the total cost is just its seed price.)
+    "Profit": 200               ## Total Revenue - Total Cost. How much raw money you will get in total for all the harvests minus the total cost it takes to buy all the seeds for those harvests. So it's how much money you walk away with
+    "Sprite Image": "image"     ## The sprite image of the crop
+}
+
+Acutally display to user:   dictionary[["Price Per Seed", "Grow Time", "Harvest Time", "Harvests", "Total Cost", "Profit"]]
+((IF HARVEST TIME == -1, THEN IN THAT SPOT WE JUST PUT "this crop is not a multi-harvest crop."))
+
+
+
+example
+{
+    "Harvests": -1,
+    "Crop Price": 100,
+    "Average Batch": 1.5,
+    "Total Revenue": 300,
+    "Price Per Seed": 25,
+    "Grow Time": 10,
+    "Harvest Time": 3,
+    "Harvest Days": [20, 25],
+    "Season": "SU",
+    "Total Cost": 100,
+    "Profit": 200
+}
