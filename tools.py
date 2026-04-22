@@ -1,5 +1,6 @@
 import requests
 import pandas as pd
+import streamlit as st
 
 def downloadPNG(crop : str):
     data = pd.read_csv("stardew_data.csv")
