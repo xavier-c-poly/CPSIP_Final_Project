@@ -1,0 +1,33 @@
+crop_name,description,grow_mature,grow_harvest,multiple_harvests,season,price,cost,average_batch,photo
+Amaranth,A purple grain cultivated by an ancient civilization.,0,7,NO,FA,150,70,1,https://stardewvalleywiki.com/mediawiki/images/7/74/Amaranth_Stage_5.png
+Artichoke,"The bud of a thistle plant. The spiny outer leaves conceal a fleshy, filling interior.",0,8,NO,FA,160,30,1,https://stardewvalleywiki.com/mediawiki/images/0/0b/Artichoke_Stage_6.png
+Beet,"A sweet and earthy root vegatable. As a bonus, the leaves make a great salad.",0,6,NO,FA,100,20,1,https://stardewvalleywiki.com/mediawiki/images/7/7c/Beet_Stage_5.png
+Bok Choy,The leafy greens and fibrous stalks are healthy and delicious.,0,4,NO,FA,80,50,1,https://stardewvalleywiki.com/mediawiki/images/5/50/Bok_Choy_Stage_5.png
+Fairy Rose,An old folk legend suggests that the sweet smell of this flower attracts fairies.,0,12,NO,FA,290,200,1,https://stardewvalleywiki.com/mediawiki/images/4/43/Fairy_Rose_Stage_5.png
+Pumpkin,"A fall favorite, grown for its crunchy seeds and delicately flavored flesh. As a bonus, the hollow shell can be carved into a festive decoration.",0,13,NO,FA,320,100,1,https://stardewvalleywiki.com/mediawiki/images/9/9d/Pumpkin_Stage_6.png
+Sweet Gem Berry,It's by far the sweetest thing you've ever smelled.,0,24,NO,FA,3000,1000,1,https://stardewvalleywiki.com/mediawiki/images/f/f0/Sweet_Gem_Berry_Stage_6.png
+Yam,A starchy tuber with a lot of culinary versatility.,0,10,NO,FA,160,60,1,https://stardewvalleywiki.com/mediawiki/images/6/64/Yam_Stage_5.png
+Cranberries,These tart red berries are a traditional winter food.,7,5,YES,FA,75,240,2,https://stardewvalleywiki.com/mediawiki/images/5/5a/Cranberry_Stage_6.png
+Eggplant,A rich and wholesome relative of the tomato. Delicious fried or stewed.,5,5,YES,FA,60,20,1,https://stardewvalleywiki.com/mediawiki/images/1/17/Eggplant_Stage_6.png
+Grape,A sweet cluster of fruit.,10,3,YES,FA,80,60,1,https://stardewvalleywiki.com/mediawiki/images/1/12/Grape_Stage_6.png
+Melon,"A cool, sweet summer treat.",0,12,NO,SM,25,80,1,https://stardewvalleywiki.com/mediawiki/images/d/d9/Melon_Stage_6.png
+Poppy,"In addition to its colorful flower, the Poppy has culinary and medicinal uses.",0,7,NO,SM,140,100,1,https://stardewvalleywiki.com/mediawiki/images/e/ee/Poppy_Stage_6.png
+Radish,A crisp and refreshing root vegetable with hints of pepper when eaten raw.,0,6,NO,SM,90,40,1,https://stardewvalleywiki.com/mediawiki/images/e/ec/Radish_Stage_5.png
+Red Cabbage,Often used in salads and coleslaws. The color can range from purple to blue to green-yellow depending on soil conditions.,0,9,NO,SM,260,100,1,https://stardewvalleywiki.com/mediawiki/images/8/8a/Red_Cabbage_Stage_6.png
+Starfruit,"An extremely juicy fruit that grows in hot, humid weather. Slightly sweet with a sour undertone.",0,13,NO,SM,750,400,1,https://stardewvalleywiki.com/mediawiki/images/c/c4/Starfruit_Stage_6.png
+Summer Spangle,"A tropical bloom that thrives in the humid summer air. Has a sweet, tangy aroma.",0,8,NO,SM,90,50,1,https://stardewvalleywiki.com/mediawiki/images/0/06/Summer_Spangle_Stage_5.png
+Blueberry,A popular berry reported to have many health benefits. The blue skin has the highest nutrient concentration.,13,9,YES,SM,50,80,3,https://stardewvalleywiki.com/mediawiki/images/8/84/Blueberry_Stage_6.png
+Hops,"A bitter, tangy flower used to flavor beer.",11,1,YES,SM,25,60,1,https://stardewvalleywiki.com/mediawiki/images/f/fe/Hops_Stage_7.png
+Hot Pepper,Fiery hot with a hint of sweetness.,5,3,YES,SM,40,40,1,https://stardewvalleywiki.com/mediawiki/images/9/96/Hot_Pepper_Stage_5.png
+Tomato,"Rich and slightly tangy, the Tomato has a wide variety of culinary uses.",11,4,YES,SM,60,50,1,https://stardewvalleywiki.com/mediawiki/images/b/bb/Tomato_Stage_6.png
+Blue Jazz,The flower grows in a shere to nvite as may butterflies as possible.,0,7,NO,SP,50,30,1,https://stardewvalleywiki.com/mediawiki/images/7/7a/Blue_Jazz_Stage_5.png
+Cauliflower,"Valuable, but slow-growing. Despite its pale color, the florets are packed with nutrients.",0,12,NO,SP,175,80,1,https://stardewvalleywiki.com/mediawiki/images/d/d7/Cauliflower_Stage_6.png
+Garlic,Adds a wonderful zestiness to dishes. High quality garlic can be pretty spicy.,0,4,NO,SP,60,40,1,https://stardewvalleywiki.com/mediawiki/images/6/6f/Garlic_Stage_5.png
+Kale,The waxy leaves are great in soups and stir frys.,0,6,NO,SP,110,70,1,https://stardewvalleywiki.com/mediawiki/images/e/e9/Kale_Stage_5.png
+Parsnip,A spring tuber closely related to the carrot. It has an earthy taste and is full of nutrients.,0,4,NO,SP,35,20,1,https://stardewvalleywiki.com/mediawiki/images/2/21/Parsnip_Stage_5.png
+Potato,A widely cultivated tuber.,0,6,NO,SP,80,50,1.2,https://stardewvalleywiki.com/mediawiki/images/e/e2/Potato_Stage_6.png
+Rhubarb,"The stalks are extremely tart, but make a great dessert when sweetened.",0,13,NO,SP,220,100,1,https://stardewvalleywiki.com/mediawiki/images/4/48/Rhubarb_Stage_6.png
+Tulip,The most popular spring flower. Has a very faint sweet smell.,0,6,NO,SP,30,20,1,https://stardewvalleywiki.com/mediawiki/images/b/b4/Tulip_Stage_6.png
+Unmilled Rice (Irrigated),Rice in its rawest form. Run this through a mill to increase the value.,0,6,NO,SP,30,40,1.11,https://stardewvalleywiki.com/mediawiki/images/2/29/Unmilled_Rice_Stage_5.png
+Green Bean,"A juicy little bean with a cool, crisp snap.",10,3,YES,SP,40,60,1,https://stardewvalleywiki.com/mediawiki/images/2/28/Green_Bean_Stage_7.png
+Strawberry,"A sweet, juicy favorite with an appealing red color.",8,4,YES,SP,120,100,1,https://stardewvalleywiki.com/mediawiki/images/4/48/Strawberry_Stage_6.png
