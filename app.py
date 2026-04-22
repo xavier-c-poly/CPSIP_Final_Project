@@ -1,9 +1,10 @@
 import streamlit as st # type: ignore
-from tools import download_png
+import pandas as pd
+from tools import downloadPNG
 
 
 def julias_function_placeholder(crop_name: str, current_season: str, date_num: int) -> dict:
-    #download_png(crop_name)
+    downloadPNG(crop_name)
     return {
         "harvests": 7,
         "price": 100,
@@ -12,7 +13,7 @@ def julias_function_placeholder(crop_name: str, current_season: str, date_num: i
         "cost": 25,
         "grow_harvest": 10,
         "grow_mature": 3,
-        "harvest_days": [20, 25],
+        "harvest_days": [15, 18, 21, 24, 27],
         "season": "SU",
         "total_cost": 100,
         "profit": 200,
@@ -43,8 +44,19 @@ def convert_season_to_readable(season_title: str) -> str:
 st.title("Stardew Crop Analyzer")
 st.divider()
 
+crop_list: list = ["Blueberry", "Beet", "Pumpkin", "Melon"]
+
+st.session_state["has_fetched_crop_list"] = False
+#i_test_delete_when_you_know_it_doesnt_fetch_crop_list_every_millisecond: int = 0  # DEBUGGING
+if not st.session_state["has_fetched_crop_list"]:
+    data = pd.read_csv("stardew_data.csv")
+    crop_list: list = data.crop_name.to_list()
+    #i_test_delete_when_you_know_it_doesnt_fetch_crop_list_every_millisecond += 1  # DEBUGGING
+    st.session_state["has_fetched_crop_list"] = True
+    #st.write(f"it has read the csv: {i_test_delete_when_you_know_it_doesnt_fetch_crop_list_every_millisecond} times")  # DEBUGGING
+
 # User input sidebar
-crop: str = st.sidebar.selectbox("Add Plant:", ["Apple", "Banana", "Beets", "Blueberries"])
+crop: str = st.sidebar.selectbox("Add Plant:", crop_list)
 season: str = st.sidebar.selectbox("Choose Season:", ["SP", "SU", "FA", "WI"])
 date: int = st.sidebar.number_input("Choose Day:", 1, 28)
 
@@ -115,39 +127,41 @@ if st.sidebar.button("Analyze"):
         col1, col2 = st.columns([1, 1], border=True)
 
         with col1:
-            st.markdown("#### Grow Time info")
+            st.write("#### Grow Time info")
             col1_1, col1_2 = st.columns([5, 1])
 
             with col1_1:
-                st.text("Harvests:")
-                st.text("Days to plant:")
+                st.write("Harvests:")
                 if harvest_time != 0:
-                    st.text("Grow Time (from first planted):")
-                    st.text("Harvest Time (after each harvest):")
+                    st.write("Grow Time (from first planted):")
+                    st.write("Harvest Time (after each harvest):")
                 else:
-                    st.text("Grow Time:")
+                    st.write("Grow Time:")
             with col1_2:
-                st.markdown(f"{harvests}")
-                st.markdown(*harvest_days)
+                st.write(f"{harvests}")
                 if harvest_time != 0:
-                    st.markdown(f"{harvest_time}")
-                    st.markdown(f"{grow_time}")
+                    st.write(f"{harvest_time}")
+                    st.write(f"{grow_time}")
                 else:
-                    st.markdown(f"{grow_time}")
+                    st.write(f"{grow_time}")
         
         with col2:
-            st.markdown("#### Price stuff info")
+            st.write("#### Price stuff info")
             col2_1, col2_2 = st.columns([5, 1])
 
             with col2_1:
-                st.text("Price Per Seed:")
-                st.text("Total Cost (if you planted on all):")
-                st.text("Profit:")
+                st.write("Price Per Seed:")
+                st.write("Total Cost (if you planted on all):")
+                st.write("Profit:")
             with col2_2:
-                st.markdown(f"{price_per_seed}")
-                st.markdown(f"{total_cost}")
-                st.markdown(f"{profit}")
+                st.write(f"{price_per_seed}")
+                st.write(f"{total_cost}")
+                st.write(f"{profit}")
         
-        
-        st.text("here is ai overview: \"ai ai ai ai yap yap yap yap\"")
-        st.image("crop.png", caption=f"Image of fully grown {crop}")
+        col3, col4 = st.columns([3, 2])
+        with col3:
+            st.write(f"#### Days To Harvest:", *harvest_days)
+            st.write("#### AI Overview:")
+            st.write(ai_result)
+        with col4:    
+            st.image("crop.png", caption=f"Fully Grown {crop}")
