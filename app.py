@@ -38,8 +38,6 @@ def convert_season_to_readable(season_title: str) -> str:
         return "NAS (Not a season)"
 
 
-# When someone selects a new crop, clear ALL outputs!
-
 # Main Info
 st.title("Stardew Crop Analyzer")
 st.divider()
@@ -60,6 +58,7 @@ crop: str = st.sidebar.selectbox("Add Plant:", crop_list)
 season: str = st.sidebar.selectbox("Choose Season:", ["SP", "SU", "FA", "WI"])
 date: int = st.sidebar.number_input("Choose Day:", 1, 28)
 
+# Wait for user to press button
 if st.sidebar.button("Analyze"):
     st.session_state["was_successful"] = False
 
@@ -68,6 +67,7 @@ if st.sidebar.button("Analyze"):
     else:
         with st.spinner("Calulating Crop Data..."):
             try:
+                # Call julia's dictionary function and jordan's ai function
                 julias_function_result: dict = julias_function_placeholder(crop, season, date)
                 jordans_function_result: str = jordans_function_placeholder(julias_function_result)
 
@@ -77,55 +77,36 @@ if st.sidebar.button("Analyze"):
                 if user_season != crop_growth_season:
                     st.error(f"{crop} does not grow in the {user_season}, it only grows in {crop_growth_season}")
                 else:
+                    # Assign all fields that will be displayed from the stardew crop data to streamlit session states
                     st.session_state["cost"] = julias_function_result["cost"]
                     st.session_state["grow_harvest"] = julias_function_result["grow_harvest"]
                     st.session_state["grow_mature"] = julias_function_result["grow_mature"]
                     st.session_state["harvests"] = julias_function_result["harvests"]
                     st.session_state["total_cost"] = julias_function_result["total_cost"]
                     st.session_state["profit"] = julias_function_result["profit"]
-                    st.session_state["photo"] = julias_function_result["photo"]
                     st.session_state["harvest_days"] = julias_function_result["harvest_days"]
-                    ## ANY OTHER FIELDS FROM JULIA'S FUNCTION WE NEED TO
-                    ## DISPLAY DIRECTLY TO USER ON THE INTERFACE GOES HERE
-                    ## Possible Seeds image instead of fully grown crops?
                     st.session_state["ai_result"] = jordans_function_result
                     st.session_state["was_successful"] = True
             except RuntimeError as e:
                 st.error(f"API call failed: {e}")
     
     if st.session_state["was_successful"] == True:
+        # Unpack streamlit session state variables to actual python variables
         price_per_seed: float = st.session_state["cost"]
         grow_time: int        = st.session_state["grow_harvest"]
         harvest_time: int     = st.session_state["grow_mature"]
         harvests: int         = st.session_state["harvests"]
         total_cost: float     = st.session_state["total_cost"]
         profit: float         = st.session_state["profit"]
-        sprite_image: str     = st.session_state["photo"]
         ai_result: str        = st.session_state["ai_result"]
         harvest_days: str     = st.session_state["harvest_days"]
 
-        # All results from calculations and database searches we will display to user
-        ## PLACEHOLDER STUFF
-        #"""
-        #st.subheader(crop)
-        #st.text(f"Grow Time\t\t= {grow_time}")
-        #st.text(f"Harvest Time\t= {harvest_time}")
-        #if harvests < 1:
-        #    st.text(f"Harvests\t\t= You cannot harvest {crop} in the {convert_season_to_readable(season)}.")
-        #else:
-        #    st.text(f"Harvests\t\t= {harvests}")
-        #st.text(f"Price Per Seed\t= {price_per_seed}")
-        #st.text(f"Total Cost\t\t= {total_cost}")
-        #st.text(f"Profit\t\t\t= {profit}")
-        #st.text(f"AI Result\t\t= {ai_result}")
-        #st.text(f"Sprite Image: {sprite_image}")
-        #st.image("../crop.png", caption=f"Image of fully grown {crop}")
-        #"""
-        ## PLACEHOLDER STUFF
 
+        # Create a subheader
         st.subheader(crop)
         col1, col2 = st.columns([1, 1], border=True)
 
+        # Create nested columns
         with col1:
             st.write("#### Grow Time info")
             col1_1, col1_2 = st.columns([5, 1])
