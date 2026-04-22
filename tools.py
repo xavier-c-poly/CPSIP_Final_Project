@@ -3,10 +3,7 @@ import pandas as pd
 import streamlit as st
 
 def downloadPNG(crop : str):
-    data = pd.read_csv("stardew_data.csv")
-    crop_data = data[data["crop_name"] == crop]
-    dict = crop_data.squeeze().to_dict()
-    response = requests.get(dict["photo"])
+    response = requests.get(pullCropData(crop)["photo"])
 
     if response.status_code == 200:
         with open("crop.png", "wb") as file:
