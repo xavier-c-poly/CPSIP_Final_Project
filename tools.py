@@ -1,0 +1,21 @@
+import requests
+import pandas as pd
+import streamlit as st
+
+def downloadPNG(crop : str):
+    response = requests.get(pullCropData(crop)["photo"])
+
+    if response.status_code == 200:
+        with open("crop.png", "wb") as file:
+            file.write(response.content)
+
+
+def pullCropData(crop : str):
+    data = pd.read_csv("stardew_data.csv")
+    crop_data = data[data["crop_name"] == crop]
+    dict = crop_data.squeeze().to_dict()
+
+    if crop_data.empty:
+        raise ValueError
+    else:
+        return dict
