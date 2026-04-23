@@ -54,6 +54,7 @@ if not st.session_state["has_fetched_crop_list"]:
     #st.write(f"it has read the csv: {i_test_delete_when_you_know_it_doesnt_fetch_crop_list_every_millisecond} times")  # DEBUGGING
 
 # User input sidebar
+st.sidebar.title("Crop Info")
 crop: str = st.sidebar.selectbox("Add Plant:", crop_list)
 season: str = st.sidebar.selectbox("Choose Season:", ["SP", "SU", "FA", "WI"])
 date: int = st.sidebar.number_input("Choose Day:", 1, 28)
