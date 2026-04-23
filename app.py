@@ -1,4 +1,4 @@
-import streamlit as st # type: ignore
+import streamlit as st
 import pandas as pd
 from tools import downloadPNG
 
@@ -20,6 +20,10 @@ def julias_function_placeholder(crop_name: str, current_season: str, date_num: i
         "photo": "image"
     }
 
+
+## !!!!!!! DELETE THIS BEFORE PULL REQUEST (description of pull request)
+## This is the main interface of the app. It includes user information retrieval on crop type, season, and date. It passes the user information into analysis functions as well as AI functions, and produces and displays the outputs in a fashionable format.
+## !!!!!!! DELETE THIS BEFORE PULL REQUEST
 def jordans_function_placeholder(crop_info: dict) -> str:
     return "This is a smart LLM response that tells you everything you need to know about the plant, including tips, tricks, and other stuff!"
 
@@ -45,13 +49,10 @@ st.divider()
 crop_list: list = ["Blueberry", "Beet", "Pumpkin", "Melon"]
 
 st.session_state["has_fetched_crop_list"] = False
-#i_test_delete_when_you_know_it_doesnt_fetch_crop_list_every_millisecond: int = 0  # DEBUGGING
 if not st.session_state["has_fetched_crop_list"]:
     data = pd.read_csv("stardew_data.csv")
     crop_list: list = data.crop_name.to_list()
-    #i_test_delete_when_you_know_it_doesnt_fetch_crop_list_every_millisecond += 1  # DEBUGGING
     st.session_state["has_fetched_crop_list"] = True
-    #st.write(f"it has read the csv: {i_test_delete_when_you_know_it_doesnt_fetch_crop_list_every_millisecond} times")  # DEBUGGING
 
 # User input sidebar
 st.sidebar.title("Crop Info")
