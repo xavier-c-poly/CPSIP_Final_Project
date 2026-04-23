@@ -6,7 +6,7 @@ from tools import downloadPNG
 def julias_function_placeholder(crop_name: str, current_season: str, date_num: int) -> dict:
     downloadPNG(crop_name)
     return {
-        "harvests": 7,
+        "harvests": 5,
         "price": 100,
         "average_batch": 1.5,
         "total_revenue": 300,
@@ -39,7 +39,7 @@ def convert_season_to_readable(season_title: str) -> str:
 
 
 # Main Info
-st.title("Stardew Crop Analyzer")
+st.title("Stardew Valley Crop Analyzer")
 st.divider()
 
 crop_list: list = ["Blueberry", "Beet", "Pumpkin", "Melon"]
@@ -108,16 +108,17 @@ if st.sidebar.button("Analyze"):
 
         # Create nested columns
         with col1:
-            st.write("#### Grow Time info")
+            st.write("#### Growth Time")
             col1_1, col1_2 = st.columns([5, 1])
 
             with col1_1:
-                st.write("Harvests:")
+                st.write("Harvests Left:")
                 if harvest_time != 0:
-                    st.write("Grow Time (from first planted):")
-                    st.write("Harvest Time (after each harvest):")
+                    st.write("Days to First Harvest:")
+                    st.write("Days Between Harvests:")
                 else:
-                    st.write("Grow Time:")
+                    st.write("Days to Harvest:")
+                    st.write("Single Harvest")
             with col1_2:
                 st.write(f"{harvests}")
                 if harvest_time != 0:
@@ -127,13 +128,13 @@ if st.sidebar.button("Analyze"):
                     st.write(f"{grow_time}")
         
         with col2:
-            st.write("#### Price stuff info")
+            st.write("#### Pricing")
             col2_1, col2_2 = st.columns([5, 1])
 
             with col2_1:
-                st.write("Price Per Seed:")
-                st.write("Total Cost (if you planted on all):")
-                st.write("Profit:")
+                st.write("Seed Cost:")
+                st.write("Total Cost:")
+                st.write("Total Profit:")
             with col2_2:
                 st.write(f"{price_per_seed}")
                 st.write(f"{total_cost}")
