@@ -1,7 +1,12 @@
+import sys
+import os
+
+sys.path.append(os.getcwd())
+
 import streamlit as st
 import pandas as pd
-from logic import updateCrop
-from summarizer import load_model, query_model
+from logic.logic import updateCrop
+from agent_helper.summarizer import load_model, query_model
 
 
 def convert_season_to_readable(season_title: str) -> str:
