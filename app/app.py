@@ -58,12 +58,11 @@ if "read_recent_inputs" not in st.session_state or not st.session_state["read_re
 st.title("Stardew Valley Crop Analyzer")
 st.divider()
 
-crop_list: list = ["Blueberry", "Beet", "Pumpkin", "Melon"]
-
-if "has_fetched_crop_list" not in st.session_state or not st.session_state["has_fetched_crop_list"]:
+if "crop_list" not in st.session_state:
     data = pd.read_csv("stardew_data.csv")
-    crop_list: list = data.crop_name.to_list()
-    st.session_state["has_fetched_crop_list"] = True
+    st.session_state["crop_list"] = data.crop_name.to_list()
+
+crop_list = st.session_state["crop_list"]
 
 # User input sidebar
 st.sidebar.title("Crop Info")
