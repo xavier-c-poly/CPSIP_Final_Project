@@ -1,38 +1,14 @@
 import streamlit as st
 import pandas as pd
-from tools import downloadPNG
-
-
-def julias_function_placeholder(crop_name: str, current_season: str, date_num: int) -> dict:
-    downloadPNG(crop_name)
-    return {
-        "harvests": 5,
-        "price": 100,
-        "average_batch": 1.5,
-        "total_revenue": 300,
-        "cost": 25,
-        "grow_harvest": 10,
-        "grow_mature": 3,
-        "harvest_days": [15, 18, 21, 24, 27],
-        "season": "SU",
-        "total_cost": 100,
-        "profit": 200,
-        "photo": "image"
-    }
-
-
-## !!!!!!! DELETE THIS BEFORE PULL REQUEST (description of pull request)
-## This is the main interface of the app. It includes user information retrieval on crop type, season, and date. It passes the user information into analysis functions as well as AI functions, and produces and displays the outputs in a fashionable format.
-## !!!!!!! DELETE THIS BEFORE PULL REQUEST
-def jordans_function_placeholder(crop_info: dict) -> str:
-    return "This is a smart LLM response that tells you everything you need to know about the plant, including tips, tricks, and other stuff!"
+from logic import updateCrop
+from summarizer import load_model, query_model
 
 
 def convert_season_to_readable(season_title: str) -> str:
     season_title = season_title.strip().lower()[:2]
     if season_title == "sp":
         return "Spring"
-    elif season_title == "su":
+    elif season_title == "su" or season_title == "sm":
         return "Summer"
     elif season_title == "fa":
         return "Fall"
@@ -49,6 +25,8 @@ st.divider()
 crop_list: list = ["Blueberry", "Beet", "Pumpkin", "Melon"]
 
 st.session_state["has_fetched_crop_list"] = False
+st.session_state["has_loaded_ai_model"] = False
+
 if not st.session_state["has_fetched_crop_list"]:
     data = pd.read_csv("stardew_data.csv")
     crop_list: list = data.crop_name.to_list()
@@ -57,51 +35,65 @@ if not st.session_state["has_fetched_crop_list"]:
 # User input sidebar
 st.sidebar.title("Crop Info")
 crop: str = st.sidebar.selectbox("Add Plant:", crop_list)
-season: str = st.sidebar.selectbox("Choose Season:", ["SP", "SU", "FA", "WI"])
+season: str = st.sidebar.selectbox("Choose Season:", ["SP", "SM", "FA", "WI"])
 date: int = st.sidebar.number_input("Choose Day:", 1, 28)
 
 # Wait for user to press button
 if st.sidebar.button("Analyze"):
     st.session_state["was_successful"] = False
+    st.session_state["is_correct_season"] = False
 
     if date < 1 or date > 28:
         st.warning("Please enter a valid date.")
     else:
         with st.spinner("Calulating Crop Data..."):
             try:
-                # Call julia's dictionary function and jordan's ai function
-                julias_function_result: dict = julias_function_placeholder(crop, season, date)
-                jordans_function_result: str = jordans_function_placeholder(julias_function_result)
+
+                # Pull useful information about the crop and the AI Overview
+                crop_info: dict = updateCrop(crop, season, date)
 
                 user_season: str = convert_season_to_readable(season)
-                crop_growth_season: str = convert_season_to_readable(julias_function_result["season"])
+                crop_growth_season: str = convert_season_to_readable(crop_info["season"])
                 
                 if user_season != crop_growth_season:
                     st.error(f"{crop} does not grow in the {user_season}, it only grows in {crop_growth_season}")
                 else:
+                    st.session_state["is_correct_season"] = True
+                
+                    # Load the AI model if needed
+                    if not st.session_state["has_loaded_ai_model"]:
+                        load_model()
+                        st.session_state["has_loaded_ai_model"] = True
+
+                if st.session_state["is_correct_season"] == True:
+                    # Query the AI model to obtain an AI overview on the crop
+                    ai_overview: str = query_model(crop, convert_season_to_readable(season), date)
+
                     # Assign all fields that will be displayed from the stardew crop data to streamlit session states
-                    st.session_state["cost"] = julias_function_result["cost"]
-                    st.session_state["grow_harvest"] = julias_function_result["grow_harvest"]
-                    st.session_state["grow_mature"] = julias_function_result["grow_mature"]
-                    st.session_state["harvests"] = julias_function_result["harvests"]
-                    st.session_state["total_cost"] = julias_function_result["total_cost"]
-                    st.session_state["profit"] = julias_function_result["profit"]
-                    st.session_state["harvest_days"] = julias_function_result["harvest_days"]
-                    st.session_state["ai_result"] = jordans_function_result
+                    st.session_state["cost"] = crop_info["cost"]
+                    st.session_state["price"] = crop_info["price"]
+                    st.session_state["grow_harvest"] = crop_info["grow_harvest"]
+                    st.session_state["grow_mature"] = crop_info["grow_mature"]
+                    st.session_state["harvests"] = crop_info["harvests"]
+                    st.session_state["total_cost"] = crop_info["total_cost"]
+                    st.session_state["profit"] = crop_info["profit"]
+                    st.session_state["harvest_days"] = crop_info["harvest_days"]
+                    st.session_state["ai_result"] = ai_overview                    
                     st.session_state["was_successful"] = True
             except RuntimeError as e:
                 st.error(f"API call failed: {e}")
     
     if st.session_state["was_successful"] == True:
         # Unpack streamlit session state variables to actual python variables
-        price_per_seed: float = st.session_state["cost"]
-        grow_time: int        = st.session_state["grow_harvest"]
-        harvest_time: int     = st.session_state["grow_mature"]
-        harvests: int         = st.session_state["harvests"]
-        total_cost: float     = st.session_state["total_cost"]
-        profit: float         = st.session_state["profit"]
-        ai_result: str        = st.session_state["ai_result"]
-        harvest_days: str     = st.session_state["harvest_days"]
+        price_per_seed: float    = st.session_state["cost"]
+        price_per_harvest: float = st.session_state["price"]
+        grow_time: int           = st.session_state["grow_harvest"]
+        harvest_time: int        = st.session_state["grow_mature"]
+        harvests: int            = st.session_state["harvests"]
+        total_cost: float        = st.session_state["total_cost"]
+        profit: float            = st.session_state["profit"]
+        ai_result: str           = st.session_state["ai_result"]
+        harvest_days: str        = st.session_state["harvest_days"]
 
 
         # Create a subheader
@@ -135,16 +127,18 @@ if st.sidebar.button("Analyze"):
 
             with col2_1:
                 st.write("Seed Cost:")
+                st.write("Harvest Value:")
                 st.write("Total Cost:")
                 st.write("Total Profit:")
             with col2_2:
-                st.write(f"{price_per_seed}")
-                st.write(f"{total_cost}")
-                st.write(f"{profit}")
+                st.write(f"{price_per_seed:<4} G")
+                st.write(f"{price_per_harvest:<4} G")
+                st.write(f"{total_cost:<4} G")
+                st.write(f"{profit:<4} G")
         
         col3, col4 = st.columns([3, 2])
         with col3:
-            st.write(f"#### Days To Harvest:", *harvest_days)
+            st.write(f"#### Projected Harvest Dates:\n", *harvest_days)
             st.write("#### AI Overview:")
             st.write(ai_result)
         with col4:    

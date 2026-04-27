@@ -193,7 +193,7 @@ def query_model(crop_type: str, season: str, day: int) -> str:
     str: response from model
     """
 
-    question = f"How viable is {crop_type} to plant on {season} {day} relative to other plants in {season}"
+    question = f"How viable is {crop_type} to plant on {season} {day} relative to other plants in {season}? Each season lasts 28 days."
     return rag_chain.invoke({"question": question})
 
 
