@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 
+
 def downloadPNG(dictionary : dict, file_name : "str"):
     response = requests.get(dictionary["photo"])
 
