@@ -9,6 +9,30 @@ from logic.logic import updateCrop
 from agent_helper.summarizer import load_model, query_model
 
 
+def save_recents():
+    with open("saved_user_inputs.txt", "w") as file:
+        file.write(f"{st.session_state["recent_crop"]} {st.session_state["recent_season"]} {st.session_state["recent_date"]}")
+
+
+def open_recents() -> bool:
+    if not os.path.exists("saved_user_inputs.txt"):
+        return False
+    with open("saved_user_inputs.txt", "r") as file:
+        raw_saved_inputs = file.read()
+        split_saved_inputs = raw_saved_inputs.split()
+        if len(split_saved_inputs) != 3:
+            return False
+        
+        try:
+            st.session_state["recent_crop"] = split_saved_inputs[0]
+            st.session_state["recent_season"] = split_saved_inputs[1]
+            st.session_state["recent_date"] = int(split_saved_inputs[2])
+            return True
+        except:
+            return False
+    return False
+
+
 def convert_season_to_readable(season_title: str) -> str:
     season_title = season_title.strip().lower()[:2]
     if season_title == "sp":
@@ -24,24 +48,29 @@ def convert_season_to_readable(season_title: str) -> str:
 
 
 # Main Info
+if "read_recent_inputs" not in st.session_state or not st.session_state["read_recent_inputs"]:
+    st.session_state["read_recent_inputs"] = True
+    if not open_recents():
+        st.session_state["recent_crop"] = "Amaranth"
+        st.session_state["recent_season"] = "SP"
+        st.session_state["recent_date"] = 1
+
 st.title("Stardew Valley Crop Analyzer")
 st.divider()
 
 crop_list: list = ["Blueberry", "Beet", "Pumpkin", "Melon"]
 
-st.session_state["has_fetched_crop_list"] = False
-st.session_state["has_loaded_ai_model"] = False
-
-if not st.session_state["has_fetched_crop_list"]:
+if "has_fetched_crop_list" not in st.session_state or not st.session_state["has_fetched_crop_list"]:
     data = pd.read_csv("stardew_data.csv")
     crop_list: list = data.crop_name.to_list()
     st.session_state["has_fetched_crop_list"] = True
 
 # User input sidebar
 st.sidebar.title("Crop Info")
-crop: str = st.sidebar.selectbox("Add Plant:", crop_list)
-season: str = st.sidebar.selectbox("Choose Season:", ["SP", "SM", "FA", "WI"])
-date: int = st.sidebar.number_input("Choose Day:", 1, 28)
+crop: str = st.sidebar.selectbox("Add Plant:", crop_list, index=crop_list.index(st.session_state["recent_crop"]))
+season: str = st.sidebar.selectbox("Choose Season:", ["SP", "SM", "FA", "WI"],
+    index=["SP", "SM", "FA", "WI"].index(st.session_state["recent_season"]))
+date: int = st.sidebar.number_input("Choose Day:", 1, 28, value=st.session_state["recent_date"])
 
 # Wait for user to press button
 if st.sidebar.button("Analyze"):
@@ -66,7 +95,7 @@ if st.sidebar.button("Analyze"):
                     st.session_state["is_correct_season"] = True
                 
                     # Load the AI model if needed
-                    if not st.session_state["has_loaded_ai_model"]:
+                    if "has_loaded_ai_model" not in st.session_state or not st.session_state["has_loaded_ai_model"]:
                         load_model()
                         st.session_state["has_loaded_ai_model"] = True
 
@@ -99,6 +128,14 @@ if st.sidebar.button("Analyze"):
         profit: float            = st.session_state["profit"]
         ai_result: str           = st.session_state["ai_result"]
         harvest_days: str        = st.session_state["harvest_days"]
+
+
+        # Memory part
+        st.session_state["recent_crop"] = crop
+        st.session_state["recent_season"] = season
+        st.session_state["recent_date"] = date
+
+        save_recents()
 
 
         # Create a subheader

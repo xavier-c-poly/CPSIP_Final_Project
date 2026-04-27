@@ -4,35 +4,35 @@ Currency is measured in G. G is not short for anything and should be written sim
 G is an exclusively integer based currency and should never have a decimal
 The following are common crops able to be purchased by the user.
 
-Amaranth grows from its seeds in 7 days in Fall and can only be harvested once. Amaranth seeds cost 70 G and sells for on average 150.0 G.
-Artichoke grows from its seeds in 8 days in Fall and can only be harvested once. Artichoke seeds cost 30 G and sells for on average 160.0 G.
-Beet grows from its seeds in 6 days in Fall and can only be harvested once. Beet seeds cost 20 G and sells for on average 100.0 G.
-Bok Choy grows from its seeds in 4 days in Fall and can only be harvested once. Bok Choy seeds cost 50 G and sells for on average 80.0 G.
-Fairy Rose grows from its seeds in 12 days in Fall and can only be harvested once. Fairy Rose seeds cost 200 G and sells for on average 290.0 G.
-Pumpkin grows from its seeds in 13 days in Fall and can only be harvested once. Pumpkin seeds cost 100 G and sells for on average 320.0 G.
-Sweet Gem Berry grows from its seeds in 24 days in Fall and can only be harvested once. Sweet Gem Berry seeds cost 1000 G and sells for on average 3000.0 G.
-Yam grows from its seeds in 10 days in Fall and can only be harvested once. Yam seeds cost 60 G and sells for on average 160.0 G.
-Cranberries grows from its seeds in 7 days in Fall and can be harvested every 5 days. Cranberries seeds cost 240 G and sells for on average 150.0 G.
-Eggplant grows from its seeds in 5 days in Fall and can be harvested every 5 days. Eggplant seeds cost 20 G and sells for on average 60.0 G.
-Grape grows from its seeds in 10 days in Fall and can be harvested every 3 days. Grape seeds cost 60 G and sells for on average 80.0 G.
-Melon grows from its seeds in 12 days in Summer and can only be harvested once. Melon seeds cost 80 G and sells for on average 25.0 G.
-Poppy grows from its seeds in 7 days in Summer and can only be harvested once. Poppy seeds cost 100 G and sells for on average 140.0 G.
-Radish grows from its seeds in 6 days in Summer and can only be harvested once. Radish seeds cost 40 G and sells for on average 90.0 G.
-Red Cabbage grows from its seeds in 9 days in Summer and can only be harvested once. Red Cabbage seeds cost 100 G and sells for on average 260.0 G.
-Starfruit grows from its seeds in 13 days in Summer and can only be harvested once. Starfruit seeds cost 400 G and sells for on average 750.0 G.
-Summer Spangle grows from its seeds in 8 days in Summer and can only be harvested once. Summer Spangle seeds cost 50 G and sells for on average 90.0 G.
-Blueberry grows from its seeds in 13 days in Summer and can be harvested every 9 days. Blueberry seeds cost 80 G and sells for on average 150.0 G.
-Hops grows from its seeds in 11 days in Summer and can be harvested every 1 days. Hops seeds cost 60 G and sells for on average 25.0 G.
-Hot Pepper grows from its seeds in 5 days in Summer and can be harvested every 3 days. Hot Pepper seeds cost 40 G and sells for on average 40.0 G.
-Tomato grows from its seeds in 11 days in Summer and can be harvested every 4 days. Tomato seeds cost 50 G and sells for on average 60.0 G.
-Blue Jazz grows from its seeds in 7 days in Spring and can only be harvested once. Blue Jazz seeds cost 30 G and sells for on average 50.0 G.
-Cauliflower grows from its seeds in 12 days in Spring and can only be harvested once. Cauliflower seeds cost 80 G and sells for on average 175.0 G.
-Garlic grows from its seeds in 4 days in Spring and can only be harvested once. Garlic seeds cost 40 G and sells for on average 60.0 G.
-Kale grows from its seeds in 6 days in Spring and can only be harvested once. Kale seeds cost 70 G and sells for on average 110.0 G.
-Parsnip grows from its seeds in 4 days in Spring and can only be harvested once. Parsnip seeds cost 20 G and sells for on average 35.0 G.
-Potato grows from its seeds in 6 days in Spring and can only be harvested once. Potato seeds cost 50 G and sells for on average 96.0 G.
-Rhubarb grows from its seeds in 13 days in Spring and can only be harvested once. Rhubarb seeds cost 100 G and sells for on average 220.0 G.
-Tulip grows from its seeds in 6 days in Spring and can only be harvested once. Tulip seeds cost 20 G and sells for on average 30.0 G.
-Unmilled Rice (Irrigated) grows from its seeds in 6 days in Spring and can only be harvested once. Unmilled Rice (Irrigated) seeds cost 40 G and sells for on average 33.300000000000004 G.
-Green Bean grows from its seeds in 10 days in Spring and can be harvested every 3 days. Green Bean seeds cost 60 G and sells for on average 40.0 G.
-Strawberry grows from its seeds in 8 days in Spring and can be harvested every 4 days. Strawberry seeds cost 100 G and sells for on average 120.0 G.
+Amaranth grows from its seeds in 7 days in Fall and can only be harvested once. Amaranth seeds cost 70 G and sells for on average 150 G.
+Artichoke grows from its seeds in 8 days in Fall and can only be harvested once. Artichoke seeds cost 30 G and sells for on average 160 G.
+Beet grows from its seeds in 6 days in Fall and can only be harvested once. Beet seeds cost 20 G and sells for on average 100 G.
+Bok Choy grows from its seeds in 4 days in Fall and can only be harvested once. Bok Choy seeds cost 50 G and sells for on average 80 G.
+Fairy Rose grows from its seeds in 12 days in Fall and can only be harvested once. Fairy Rose seeds cost 200 G and sells for on average 290 G.
+Pumpkin grows from its seeds in 13 days in Fall and can only be harvested once. Pumpkin seeds cost 100 G and sells for on average 320 G.
+Sweet Gem Berry grows from its seeds in 24 days in Fall and can only be harvested once. Sweet Gem Berry seeds cost 1000 G and sells for on average 3000 G.
+Yam grows from its seeds in 10 days in Fall and can only be harvested once. Yam seeds cost 60 G and sells for on average 160 G.
+Cranberries grows from its seeds in 7 days in Fall and can be harvested every 5 days. Cranberries seeds cost 240 G and sells for on average 150 G.
+Eggplant grows from its seeds in 5 days in Fall and can be harvested every 5 days. Eggplant seeds cost 20 G and sells for on average 60 G.
+Grape grows from its seeds in 10 days in Fall and can be harvested every 3 days. Grape seeds cost 60 G and sells for on average 80 G.
+Melon grows from its seeds in 12 days in Summer and can only be harvested once. Melon seeds cost 80 G and sells for on average 250 G.
+Poppy grows from its seeds in 7 days in Summer and can only be harvested once. Poppy seeds cost 100 G and sells for on average 140 G.
+Radish grows from its seeds in 6 days in Summer and can only be harvested once. Radish seeds cost 40 G and sells for on average 90 G.
+Red Cabbage grows from its seeds in 9 days in Summer and can only be harvested once. Red Cabbage seeds cost 100 G and sells for on average 260 G.
+Starfruit grows from its seeds in 13 days in Summer and can only be harvested once. Starfruit seeds cost 400 G and sells for on average 750 G.
+Summer Spangle grows from its seeds in 8 days in Summer and can only be harvested once. Summer Spangle seeds cost 50 G and sells for on average 90 G.
+Blueberry grows from its seeds in 13 days in Summer and can be harvested every 9 days. Blueberry seeds cost 80 G and sells for on average 150 G.
+Hops grows from its seeds in 11 days in Summer and can be harvested every 1 days. Hops seeds cost 60 G and sells for on average 25 G.
+Hot Pepper grows from its seeds in 5 days in Summer and can be harvested every 3 days. Hot Pepper seeds cost 40 G and sells for on average 40 G.
+Tomato grows from its seeds in 11 days in Summer and can be harvested every 4 days. Tomato seeds cost 50 G and sells for on average 60 G.
+Blue Jazz grows from its seeds in 7 days in Spring and can only be harvested once. Blue Jazz seeds cost 30 G and sells for on average 50 G.
+Cauliflower grows from its seeds in 12 days in Spring and can only be harvested once. Cauliflower seeds cost 80 G and sells for on average 175 G.
+Garlic grows from its seeds in 4 days in Spring and can only be harvested once. Garlic seeds cost 40 G and sells for on average 60 G.
+Kale grows from its seeds in 6 days in Spring and can only be harvested once. Kale seeds cost 70 G and sells for on average 110 G.
+Parsnip grows from its seeds in 4 days in Spring and can only be harvested once. Parsnip seeds cost 20 G and sells for on average 35 G.
+Potato grows from its seeds in 6 days in Spring and can only be harvested once. Potato seeds cost 50 G and sells for on average 96 G.
+Rhubarb grows from its seeds in 13 days in Spring and can only be harvested once. Rhubarb seeds cost 100 G and sells for on average 220 G.
+Tulip grows from its seeds in 6 days in Spring and can only be harvested once. Tulip seeds cost 20 G and sells for on average 30 G.
+Unmilled Rice (Irrigated) grows from its seeds in 6 days in Spring and can only be harvested once. Unmilled Rice (Irrigated) seeds cost 40 G and sells for on average 33 G.
+Green Bean grows from its seeds in 10 days in Spring and can be harvested every 3 days. Green Bean seeds cost 60 G and sells for on average 40 G.
+Strawberry grows from its seeds in 8 days in Spring and can be harvested every 4 days. Strawberry seeds cost 100 G and sells for on average 120 G.

@@ -1,3 +1,11 @@
+import sys
+import os
+
+sys.path.append(os.getcwd())
+
+from logic.agent_tools import crop_analyzer
+
+
 import asyncio
 import os
 import time
@@ -12,6 +20,10 @@ from langchain_core.documents import Document
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from operator import itemgetter
+
+#import sys
+#sys.path.append("../")
+#from logic import agent_tools
 
 
 load_dotenv()
@@ -37,6 +49,8 @@ model="gemini-2.5-flash",
 google_api_key=os.environ["GOOGLE_API_KEY"],
 temperature=0.2,
 )
+
+llm.bind_tools([crop_analyzer])
 
 pc = Pinecone(api_key=os.environ["PINECONE_API_KEY"])
 index = pc.Index(INDEX_NAME)

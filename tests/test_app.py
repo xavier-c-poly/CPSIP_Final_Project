@@ -5,7 +5,7 @@ sys.path.append(os.getcwd())
 
 import pandas as pd
 from logic.logic import updateCrop
-from langchain.summarizer import load_model, query_model
+from agent_helper.summarizer import load_model, query_model
 
 def test_logic_basic():
     result = updateCrop("Beet", "FA", 21)
