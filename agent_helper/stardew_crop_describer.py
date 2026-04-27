@@ -29,7 +29,7 @@ def generate_stardew_crop_descriptions():
             season, price, cost, average_batch, _photo) in crop_data.itertuples(index=False):
             crops.append((crop_name, grow_mature if grow_mature > 0 else grow_harvest,
                 decompress_date[season], grow_harvest if grow_mature > 0 else 0,
-                cost, price * average_batch))
+                cost, int(price * average_batch)))
 
         for crop_name, grow_time, season, regrow_rate, seed_price, avg_sell_price in crops:
             file.write(CROP_TEXT.format(crop_name, grow_time, season,
